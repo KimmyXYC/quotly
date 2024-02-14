@@ -27,7 +27,7 @@ services:
         env_file: .env
         volumes:
             - ./assets/fonts:/app/assets/fonts
-            - /usr/share/fonts:/usr/share/fonts
+            - /usr/share/fonts:/usr/share/fonts:ro
         restart: always
         logging:
             driver: "json-file"
