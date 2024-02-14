@@ -2,7 +2,7 @@ version: '3'
 
 services:
     bot:
-        image: ghcr.io/KimmyXYC/quote-bot
+        image: ghcr.io/kimmyxyc/quote-bot
         env_file: .env
         restart: always
         logging:
@@ -23,7 +23,7 @@ services:
         networks:
             - quotly
     api:
-        image: ghcr.io/KimmyXYC/quote-api
+        image: ghcr.io/kimmyxyc/quote-api
         env_file: .env
         volumes:
             - ./assets/fonts:/app/assets/fonts
