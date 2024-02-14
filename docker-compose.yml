@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+    bot:
+        image: ghcr.io/KimmyXYC/quote-bot
+        env_file: .env
+        restart: always
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        networks:
+            - quotly
+        command: node index.js
+    mongo:
+        restart: always
+        image: mongo
+        volumes:
+            - ./data/db:/data/db
+        ports:
+            - 127.0.0.1:27017:27017
+        networks:
+            - quotly
+    api:
+        image: ghcr.io/KimmyXYC/quote-api
+        env_file: .env
+        volumes:
+            - ./assets/fonts:/app/assets/fonts
+        restart: always
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        networks:
+            - quotly
+        command: node index.js
+        ports:
+            - 127.0.0.1:4888:4888
+
+networks:
+    quotly:
+        
