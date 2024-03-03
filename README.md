@@ -13,11 +13,6 @@ cp .env.example .env
 
 - Place the font files in the `assets/fonts` folder
 
-- Creat network
-```shell
-docker network create quotly
-```
-
 - Starting with Docker Compose
 ```shell
 docker compose up -d
